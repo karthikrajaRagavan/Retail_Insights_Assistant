@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F4F6F6; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #1C2833; padding: 20pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 28pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 18pt 40pt 40pt 40pt; display: flex; gap: 25pt;
+}
+.left-col { flex: 1.2; display: flex; flex-direction: column; gap: 10pt; }
+.right-col { flex: 0.8; display: flex; flex-direction: column; gap: 10pt; }
+.data-card {
+  background: #FFFFFF; border-radius: 6pt; padding: 10pt 14pt;
+  border: 1pt solid #D5D8DC;
+}
+.data-title { color: #16A085; font-size: 12pt; font-weight: bold; margin: 0 0 5pt 0; }
+.data-text { color: #2C3E50; font-size: 10pt; margin: 0; line-height: 1.4; }
+.schema-box {
+  background: #1C2833; border-radius: 6pt; padding: 15pt; flex: 1;
+}
+.schema-title { color: #16A085; font-size: 12pt; font-weight: bold; margin: 0 0 10pt 0; }
+.schema-text { color: #AAB7B8; font-size: 10pt; margin: 0; font-family: Courier New, monospace; line-height: 1.6; }
+.highlight { color: #F1C40F; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Data Layer (Demo)</h1>
+</div>
+<div class="content">
+  <div class="left-col">
+    <div class="data-card">
+      <p class="data-title">Dataset Selection</p>
+      <p class="data-text">Analyzed 7 CSV files. Selected Amazon Sale Report (128K rows) for clean schema, complete transactions, and consistent date range (Apr-Jun 2022).</p>
+    </div>
+    <div class="data-card">
+      <p class="data-title">Why Single Table?</p>
+      <p class="data-text">Other files had: mixed schemas, embedded tables, date range mismatch, zero SKU overlap, or non-tabular format. No meaningful joins possible.</p>
+    </div>
+    <div class="data-card">
+      <p class="data-title">Processing Approach</p>
+      <p class="data-text">Raw CSV loaded directly into DuckDB with column renaming. No ETL pipeline needed for demo - data is clean enough for analytics.</p>
+    </div>
+  </div>
+  <div class="right-col">
+    <div class="schema-box">
+      <p class="schema-title">Table: amazon_sales</p>
+      <p class="schema-text">
+        <span class="highlight">order_id</span> VARCHAR<br/>
+        <span class="highlight">order_date</span> DATE<br/>
+        <span class="highlight">status</span> VARCHAR<br/>
+        <span class="highlight">category</span> VARCHAR<br/>
+        <span class="highlight">size</span> VARCHAR<br/>
+        <span class="highlight">quantity</span> INTEGER<br/>
+        <span class="highlight">amount</span> DECIMAL<br/>
+        <span class="highlight">city</span> VARCHAR<br/>
+        <span class="highlight">state</span> VARCHAR<br/>
+        <span class="highlight">is_b2b</span> BOOLEAN
+      </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

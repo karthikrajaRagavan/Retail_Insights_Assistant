@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F4F6F6; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #1C2833; padding: 20pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 28pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 20pt 40pt 40pt 40pt; display: flex; gap: 25pt;
+}
+.column { flex: 1; display: flex; flex-direction: column; gap: 12pt; }
+.tech-card {
+  background: #FFFFFF; border-radius: 6pt; padding: 12pt 15pt;
+  border-left: 4pt solid #16A085;
+}
+.tech-name { color: #1C2833; font-size: 13pt; font-weight: bold; margin: 0 0 4pt 0; }
+.tech-role { color: #5D6D7E; font-size: 10pt; margin: 0; line-height: 1.3; }
+.tech-card.framework { border-left-color: #3498DB; }
+.tech-card.llm { border-left-color: #9B59B6; }
+.tech-card.data { border-left-color: #16A085; }
+.tech-card.security { border-left-color: #E74C3C; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Technology Stack</h1>
+</div>
+<div class="content">
+  <div class="column">
+    <div class="tech-card framework">
+      <p class="tech-name">Google ADK</p>
+      <p class="tech-role">Agent Development Kit for multi-agent orchestration with LlmAgent, SequentialAgent, and AgentTool patterns</p>
+    </div>
+    <div class="tech-card llm">
+      <p class="tech-name">Gemini 2.5 Pro</p>
+      <p class="tech-role">Primary orchestration LLM for agent reasoning, query classification, and response generation</p>
+    </div>
+    <div class="tech-card llm">
+      <p class="tech-name">OpenAI GPT-4o</p>
+      <p class="tech-role">Powers PandasAI for natural language to SQL conversion with high accuracy</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="tech-card data">
+      <p class="tech-name">DuckDB</p>
+      <p class="tech-role">In-memory OLAP database for fast analytical queries on 128K rows</p>
+    </div>
+    <div class="tech-card data">
+      <p class="tech-name">PandasAI</p>
+      <p class="tech-role">Natural language interface that generates SQL from business questions</p>
+    </div>
+    <div class="tech-card security">
+      <p class="tech-name">NVIDIA NeMo Guardrails</p>
+      <p class="tech-role">Input validation, off-topic blocking, and SQL injection prevention</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

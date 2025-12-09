@@ -1,0 +1,24 @@
+# Environment
+.env
+
+# Credentials (DO NOT COMMIT)
+service-account.json
+*.json.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

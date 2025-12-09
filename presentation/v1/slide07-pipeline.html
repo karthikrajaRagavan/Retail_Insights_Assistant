@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F4F6F6; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #1C2833; padding: 18pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 26pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 20pt 40pt 40pt 40pt; display: flex; flex-direction: column; gap: 18pt;
+}
+.pipeline {
+  display: flex; align-items: center; gap: 6pt;
+}
+.step {
+  background: #FFFFFF; border-radius: 6pt; padding: 10pt 12pt;
+  border: 2pt solid #D5D8DC; text-align: center; flex: 1;
+}
+.step.active { border-color: #16A085; background: #E8F6F3; }
+.step-num { color: #16A085; font-size: 16pt; font-weight: bold; margin: 0; }
+.step-name { color: #1C2833; font-size: 10pt; font-weight: bold; margin: 3pt 0 0 0; }
+.arrow { color: #16A085; font-size: 18pt; margin: 0; }
+.example-box {
+  background: #FFFFFF; border-radius: 6pt; padding: 15pt 20pt;
+  border: 1pt solid #D5D8DC;
+}
+.example-row { display: flex; gap: 15pt; margin-bottom: 8pt; }
+.example-label { color: #5D6D7E; font-size: 10pt; font-weight: bold; width: 70pt; margin: 0; }
+.example-text { color: #1C2833; font-size: 10pt; flex: 1; margin: 0; }
+.code-box { background: #F4F6F6; padding: 6pt 10pt; border-radius: 4pt; }
+.code-text { font-family: Courier New, monospace; font-size: 9pt; color: #1C2833; margin: 0; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Query-Response Pipeline</h1>
+</div>
+<div class="content">
+  <div class="pipeline">
+    <div class="step active">
+      <p class="step-num">1</p>
+      <p class="step-name">User Query</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step">
+      <p class="step-num">2</p>
+      <p class="step-name">Guardrails</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step">
+      <p class="step-num">3</p>
+      <p class="step-name">NL to SQL</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step">
+      <p class="step-num">4</p>
+      <p class="step-name">Execute</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step">
+      <p class="step-num">5</p>
+      <p class="step-name">Format</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step active">
+      <p class="step-num">6</p>
+      <p class="step-name">Response</p>
+    </div>
+  </div>
+  <div class="example-box">
+    <div class="example-row">
+      <p class="example-label">Input:</p>
+      <p class="example-text">"What are the top 5 selling categories?"</p>
+    </div>
+    <div class="example-row">
+      <p class="example-label">SQL:</p>
+      <div class="code-box">
+        <p class="code-text">SELECT category, SUM(amount) as total FROM amazon_sales GROUP BY category ORDER BY total DESC LIMIT 5</p>
+      </div>
+    </div>
+    <div class="example-row">
+      <p class="example-label">Output:</p>
+      <p class="example-text">Formatted table with insights: "Set category leads with 45% of total sales..."</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F4F6F6; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #1C2833; padding: 18pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 26pt; font-weight: bold; margin: 0; }
+.content {
+  display: flex; flex: 1; padding: 20pt 40pt 40pt 40pt; gap: 35pt;
+}
+.column { flex: 1; }
+.section-title-box {
+  border-bottom: 3pt solid #16A085; padding-bottom: 6pt; margin-bottom: 12pt;
+}
+.section-title { color: #1C2833; font-size: 16pt; font-weight: bold; margin: 0; }
+.problem-box {
+  background: #FFFFFF; border-left: 5pt solid #E74C3C;
+  padding: 12pt 18pt; margin-bottom: 12pt;
+}
+.solution-box {
+  background: #FFFFFF; border-left: 5pt solid #16A085;
+  padding: 12pt 18pt; margin-bottom: 12pt;
+}
+.box-text { color: #2C3E50; font-size: 12pt; margin: 0; line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Problem & Solution</h1>
+</div>
+<div class="content">
+  <div class="column">
+    <div class="section-title-box">
+      <p class="section-title">The Challenge</p>
+    </div>
+    <div class="problem-box">
+      <p class="box-text">Large volumes of sales data across regions and products</p>
+    </div>
+    <div class="problem-box">
+      <p class="box-text">Executives want conversational queries without SQL</p>
+    </div>
+    <div class="problem-box">
+      <p class="box-text">Need instant summaries and insights</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="section-title-box">
+      <p class="section-title">Our Solution</p>
+    </div>
+    <div class="solution-box">
+      <p class="box-text">GenAI multi-agent system for natural language analytics</p>
+    </div>
+    <div class="solution-box">
+      <p class="box-text">Automatic SQL generation with guardrails</p>
+    </div>
+    <div class="solution-box">
+      <p class="box-text">Business insights for decision-makers</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

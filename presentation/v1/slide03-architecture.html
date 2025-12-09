@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F4F6F6; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #1C2833; padding: 18pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 26pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 18pt 40pt 42pt 40pt; display: flex; flex-direction: column; align-items: center; gap: 6pt;
+}
+.layer {
+  width: 560pt; display: flex; align-items: center;
+}
+.layer-box {
+  background: #FFFFFF; border: 2pt solid #AAB7B8; padding: 10pt 18pt;
+  text-align: center; flex: 1;
+}
+.layer-box.primary { background: #1C2833; border-color: #1C2833; }
+.layer-box.accent { background: #16A085; border-color: #16A085; }
+.layer-box.secondary { background: #2E4053; border-color: #2E4053; }
+.layer-title { font-size: 13pt; font-weight: bold; margin: 0; }
+.layer-title.light { color: #FFFFFF; }
+.layer-title.dark { color: #1C2833; }
+.layer-sub { font-size: 9pt; margin: 3pt 0 0 0; }
+.layer-sub.light { color: #AAB7B8; }
+.layer-sub.dark { color: #5D6D7E; }
+.arrow { color: #16A085; font-size: 16pt; margin: 0; text-align: center; width: 560pt; }
+.multi-box { display: flex; gap: 8pt; flex: 1; }
+.small-box {
+  background: #FFFFFF; border: 2pt solid #AAB7B8; padding: 8pt 12pt;
+  text-align: center; flex: 1;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">System Architecture</h1>
+</div>
+<div class="content">
+  <div class="layer">
+    <div class="layer-box primary">
+      <p class="layer-title light">User Query (Natural Language)</p>
+    </div>
+  </div>
+  <p class="arrow">v</p>
+  <div class="layer">
+    <div class="layer-box accent">
+      <p class="layer-title light">Orchestrator Agent (Gemini 2.5 Pro)</p>
+      <p class="layer-sub light">Guardrails + Classification + Routing</p>
+    </div>
+  </div>
+  <p class="arrow">v</p>
+  <div class="layer">
+    <div class="multi-box">
+      <div class="small-box">
+        <p class="layer-title dark">Query Resolution</p>
+        <p class="layer-sub dark">NL to SQL</p>
+      </div>
+      <div class="small-box">
+        <p class="layer-title dark">Data Extraction</p>
+        <p class="layer-sub dark">DuckDB</p>
+      </div>
+      <div class="small-box">
+        <p class="layer-title dark">Response Validation</p>
+        <p class="layer-sub dark">Format</p>
+      </div>
+    </div>
+  </div>
+  <p class="arrow">v</p>
+  <div class="layer">
+    <div class="layer-box secondary">
+      <p class="layer-title light">DuckDB In-Memory (128K Orders)</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

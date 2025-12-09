@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #1B262C; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  padding: 16pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 24pt; font-weight: bold; margin: 0; }
+.header-sub { color: #6C757D; font-size: 12pt; margin: 3pt 0 0 0; }
+.content {
+  flex: 1; padding: 10pt 35pt 35pt 35pt; display: flex; flex-direction: column; gap: 12pt;
+}
+.flow-row { display: flex; align-items: center; gap: 8pt; }
+.flow-box {
+  background: #2C3E50; border-radius: 4pt; padding: 10pt 14pt;
+  border: 1pt solid #3282B8; text-align: center;
+}
+.flow-box.source { background: #E74C3C; border-color: #E74C3C; flex: 0.15; }
+.flow-box.process { background: #3282B8; border-color: #3282B8; flex: 0.2; }
+.flow-box.storage { background: #9B59B6; border-color: #9B59B6; flex: 0.2; }
+.flow-box.serve { background: #00C49A; border-color: #00C49A; flex: 0.2; }
+.flow-box.app { background: #F39C12; border-color: #F39C12; flex: 0.15; }
+.flow-title { color: #FFFFFF; font-size: 10pt; font-weight: bold; margin: 0; }
+.flow-tech { color: rgba(255,255,255,0.7); font-size: 8pt; margin: 3pt 0 0 0; }
+.arrow { color: #00C49A; font-size: 16pt; }
+.layer-label { color: #6C757D; font-size: 9pt; font-weight: bold; margin: 0; width: 70pt; text-transform: uppercase; }
+.detail-row { display: flex; gap: 15pt; margin-top: 8pt; }
+.detail-card {
+  flex: 1; background: #2C3E50; border-radius: 4pt; padding: 10pt 12pt;
+  border-left: 3pt solid #00C49A;
+}
+.detail-title { color: #00C49A; font-size: 10pt; font-weight: bold; margin: 0 0 6pt 0; }
+.detail-text { color: #AAB7B8; font-size: 9pt; margin: 0 0 4pt 0; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">100GB+ Data Flow Architecture</h1>
+  <p class="header-sub">End-to-end pipeline from ingestion to insights</p>
+</div>
+<div class="content">
+  <div class="flow-row">
+    <p class="layer-label">Batch</p>
+    <div class="flow-box source">
+      <p class="flow-title">Raw Files</p>
+      <p class="flow-tech">GCS Bucket</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="flow-box process">
+      <p class="flow-title">ETL</p>
+      <p class="flow-tech">Dataflow / PySpark</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="flow-box storage">
+      <p class="flow-title">Warehouse</p>
+      <p class="flow-tech">BigQuery</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="flow-box serve">
+      <p class="flow-title">Cache</p>
+      <p class="flow-tech">Redis</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="flow-box app">
+      <p class="flow-title">Agent</p>
+      <p class="flow-tech">ADK</p>
+    </div>
+  </div>
+  <div class="flow-row">
+    <p class="layer-label">Streaming</p>
+    <div class="flow-box source">
+      <p class="flow-title">Events</p>
+      <p class="flow-tech">Pub/Sub</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="flow-box process">
+      <p class="flow-title">Stream</p>
+      <p class="flow-tech">Dataflow</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="flow-box storage">
+      <p class="flow-title">Real-time</p>
+      <p class="flow-tech">BigQuery Streaming</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="flow-box serve">
+      <p class="flow-title">Invalidate</p>
+      <p class="flow-tech">Cache Eviction</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="flow-box app">
+      <p class="flow-title">Fresh Data</p>
+      <p class="flow-tech">Live Query</p>
+    </div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-card">
+      <p class="detail-title">BigQuery Optimization</p>
+      <p class="detail-text">Partition by order_date (monthly)</p>
+      <p class="detail-text">Cluster by category, state</p>
+      <p class="detail-text">Materialized views for top-N</p>
+    </div>
+    <div class="detail-card">
+      <p class="detail-title">Cache Strategy</p>
+      <p class="detail-text">Redis with 1-hour TTL</p>
+      <p class="detail-text">Key: hash(normalized_query)</p>
+      <p class="detail-text">Expected hit rate: 60%</p>
+    </div>
+    <div class="detail-card">
+      <p class="detail-title">Schema Discovery (RAG)</p>
+      <p class="detail-text">Embed table descriptions</p>
+      <p class="detail-text">ChromaDB for similarity</p>
+      <p class="detail-text">Dynamic schema injection</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

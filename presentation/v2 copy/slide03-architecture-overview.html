@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F8F9FA; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #0F4C75; padding: 12pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 22pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 12pt 30pt 36pt 30pt; display: flex; gap: 20pt;
+}
+.diagram { flex: 0.65; display: flex; flex-direction: column; gap: 4pt; }
+.layer { display: flex; gap: 6pt; }
+.layer-box {
+  background: #FFFFFF; border: 1pt solid #DEE2E6; border-radius: 3pt;
+  padding: 6pt 8pt; text-align: center; flex: 1;
+}
+.layer-box.primary { background: #0F4C75; border-color: #0F4C75; }
+.layer-box.security { background: #E74C3C; border-color: #E74C3C; }
+.layer-box.orchestration { background: #3282B8; border-color: #3282B8; }
+.layer-box.agents { background: #00C49A; border-color: #00C49A; }
+.layer-box.data { background: #F39C12; border-color: #F39C12; }
+.layer-box.storage { background: #1B262C; border-color: #1B262C; }
+.layer-label { font-size: 7pt; font-weight: bold; margin: 0; text-transform: uppercase; letter-spacing: 0.3pt; }
+.layer-label.light { color: rgba(255,255,255,0.7); }
+.layer-title { font-size: 9pt; font-weight: bold; margin: 2pt 0 0 0; }
+.layer-title.light { color: #FFFFFF; }
+.layer-tech { font-size: 7pt; margin: 2pt 0 0 0; }
+.layer-tech.light { color: rgba(255,255,255,0.8); }
+.arrow-row { text-align: center; }
+.arrow { color: #3282B8; font-size: 10pt; margin: 0; }
+.sidebar { flex: 0.35; display: flex; flex-direction: column; gap: 8pt; }
+.info-card {
+  background: #FFFFFF; border-radius: 4pt; padding: 10pt 12pt;
+  border-left: 3pt solid #0F4C75;
+}
+.info-title { color: #0F4C75; font-size: 10pt; font-weight: bold; margin: 0 0 6pt 0; }
+.info-item { color: #495057; font-size: 8pt; margin: 0 0 4pt 0; line-height: 1.3; }
+.info-bullet { color: #00C49A; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">System Architecture Overview</h1>
+</div>
+<div class="content">
+  <div class="diagram">
+    <div class="layer">
+      <div class="layer-box primary">
+        <p class="layer-label light">PRESENTATION</p>
+        <p class="layer-title light">User Interface</p>
+        <p class="layer-tech light">ADK Web / Streamlit</p>
+      </div>
+    </div>
+    <div class="arrow-row"><p class="arrow">|</p></div>
+    <div class="layer">
+      <div class="layer-box security" style="flex: 0.4;">
+        <p class="layer-label light">SECURITY</p>
+        <p class="layer-title light">Guardrails</p>
+        <p class="layer-tech light">NeMo</p>
+      </div>
+      <div class="layer-box orchestration" style="flex: 0.6;">
+        <p class="layer-label light">ORCHESTRATION</p>
+        <p class="layer-title light">Root Agent</p>
+        <p class="layer-tech light">ADK + Gemini 2.5</p>
+      </div>
+    </div>
+    <div class="arrow-row"><p class="arrow">|</p></div>
+    <div class="layer">
+      <div class="layer-box agents">
+        <p class="layer-label light">AGENT 1</p>
+        <p class="layer-title light">Query</p>
+        <p class="layer-tech light">GPT-4o</p>
+      </div>
+      <div class="layer-box agents">
+        <p class="layer-label light">AGENT 2</p>
+        <p class="layer-title light">Extract</p>
+        <p class="layer-tech light">DuckDB</p>
+      </div>
+      <div class="layer-box agents">
+        <p class="layer-label light">AGENT 3</p>
+        <p class="layer-title light">Validate</p>
+        <p class="layer-tech light">Gemini</p>
+      </div>
+    </div>
+    <div class="arrow-row"><p class="arrow">|</p></div>
+    <div class="layer">
+      <div class="layer-box data">
+        <p class="layer-label light">SQL GEN</p>
+        <p class="layer-title light">PandasAI</p>
+      </div>
+      <div class="layer-box data">
+        <p class="layer-label light">QUERY</p>
+        <p class="layer-title light">DuckDB</p>
+      </div>
+    </div>
+    <div class="arrow-row"><p class="arrow">|</p></div>
+    <div class="layer">
+      <div class="layer-box storage">
+        <p class="layer-label light">DATA</p>
+        <p class="layer-title light">Amazon Sales (128K rows)</p>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="info-card">
+      <p class="info-title">Key Design Decisions</p>
+      <p class="info-item"><span class="info-bullet">+</span>Multi-agent for separation of concerns</p>
+      <p class="info-item"><span class="info-bullet">+</span>ADK for agent orchestration</p>
+      <p class="info-item"><span class="info-bullet">+</span>Model routing: Gemini + GPT-4o</p>
+      <p class="info-item"><span class="info-bullet">+</span>DuckDB for sub-second OLAP</p>
+    </div>
+    <div class="info-card">
+      <p class="info-title">Data Flow</p>
+      <p class="info-item">1. User asks natural language</p>
+      <p class="info-item">2. Guardrails validate input</p>
+      <p class="info-item">3. Query agent generates SQL</p>
+      <p class="info-item">4. DuckDB executes query</p>
+      <p class="info-item">5. Response formatted with context</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

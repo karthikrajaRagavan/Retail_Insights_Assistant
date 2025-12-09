@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F8F9FA; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #0F4C75; padding: 12pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 22pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 14pt 35pt 36pt 35pt; display: flex; gap: 18pt;
+}
+.left-panel { flex: 0.55; display: flex; flex-direction: column; gap: 8pt; }
+.right-panel { flex: 0.45; display: flex; flex-direction: column; gap: 10pt; }
+.agent-flow {
+  background: #FFFFFF; border-radius: 6pt; padding: 12pt; flex: 1;
+  border: 1pt solid #DEE2E6;
+}
+.flow-title { color: #0F4C75; font-size: 11pt; font-weight: bold; margin: 0 0 10pt 0; }
+.agent-row { display: flex; align-items: center; margin-bottom: 6pt; }
+.agent-box {
+  padding: 8pt 10pt; border-radius: 4pt; flex: 1;
+}
+.agent-box.orchestrator { background: #3282B8; }
+.agent-box.guardrail { background: #E74C3C; }
+.agent-box.query { background: #00C49A; }
+.agent-box.data { background: #9B59B6; }
+.agent-box.response { background: #F39C12; }
+.agent-name { color: #FFFFFF; font-size: 10pt; font-weight: bold; margin: 0; }
+.agent-tech { color: rgba(255,255,255,0.8); font-size: 8pt; margin: 2pt 0 0 0; }
+.flow-arrow { color: #3282B8; font-size: 12pt; margin: 0 8pt; }
+.indent { margin-left: 20pt; }
+.decision-card {
+  background: #FFFFFF; border-radius: 6pt; padding: 12pt;
+  border: 1pt solid #DEE2E6;
+}
+.decision-title { color: #0F4C75; font-size: 11pt; font-weight: bold; margin: 0 0 8pt 0; }
+.decision-row { display: flex; margin-bottom: 6pt; }
+.decision-q { color: #6C757D; font-size: 9pt; flex: 0.55; margin: 0; }
+.decision-a { color: #1B262C; font-size: 9pt; flex: 0.45; font-weight: bold; margin: 0; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Multi-Agent Design</h1>
+</div>
+<div class="content">
+  <div class="left-panel">
+    <div class="agent-flow">
+      <p class="flow-title">Agent Hierarchy & Flow</p>
+      <div class="agent-row">
+        <div class="agent-box orchestrator">
+          <p class="agent-name">Orchestrator Agent</p>
+          <p class="agent-tech">Gemini 2.5 Pro - Routing + Classification</p>
+        </div>
+      </div>
+      <div class="agent-row indent">
+        <p class="flow-arrow">|</p>
+      </div>
+      <div class="agent-row indent">
+        <div class="agent-box guardrail" style="flex: 0.45;">
+          <p class="agent-name">Guardrails</p>
+          <p class="agent-tech">NeMo + OpenAI</p>
+        </div>
+        <p class="flow-arrow">></p>
+        <div class="agent-box" style="flex: 0.55; background: #0F4C75;">
+          <p class="agent-name">QA Pipeline (SequentialAgent)</p>
+        </div>
+      </div>
+      <div class="agent-row indent" style="margin-left: 140pt;">
+        <p class="flow-arrow">|</p>
+      </div>
+      <div class="agent-row" style="margin-left: 100pt;">
+        <div class="agent-box query" style="flex: 0.33;">
+          <p class="agent-name">Query Resolution</p>
+          <p class="agent-tech">NL to SQL</p>
+        </div>
+        <p class="flow-arrow">></p>
+        <div class="agent-box data" style="flex: 0.33;">
+          <p class="agent-name">Data Extraction</p>
+          <p class="agent-tech">SQL Exec</p>
+        </div>
+        <p class="flow-arrow">></p>
+        <div class="agent-box response" style="flex: 0.33;">
+          <p class="agent-name">Validation</p>
+          <p class="agent-tech">Format</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-panel">
+    <div class="decision-card">
+      <p class="decision-title">Design Decisions</p>
+      <div class="decision-row">
+        <p class="decision-q">Why SequentialAgent?</p>
+        <p class="decision-a">Data dependency between steps</p>
+      </div>
+      <div class="decision-row">
+        <p class="decision-q">Why separate SQL gen/exec?</p>
+        <p class="decision-a">Audit trail + retry logic</p>
+      </div>
+      <div class="decision-row">
+        <p class="decision-q">Why Gemini for orchestration?</p>
+        <p class="decision-a">Best reasoning at lower cost</p>
+      </div>
+      <div class="decision-row">
+        <p class="decision-q">Why OpenAI for SQL gen?</p>
+        <p class="decision-a">PandasAI native integration</p>
+      </div>
+    </div>
+    <div class="decision-card">
+      <p class="decision-title">Agent Responsibilities</p>
+      <div class="decision-row">
+        <p class="decision-q">Orchestrator</p>
+        <p class="decision-a">Classify, route, compose response</p>
+      </div>
+      <div class="decision-row">
+        <p class="decision-q">Query Resolution</p>
+        <p class="decision-a">NL to valid SQL</p>
+      </div>
+      <div class="decision-row">
+        <p class="decision-q">Data Extraction</p>
+        <p class="decision-a">Execute SQL, return rows</p>
+      </div>
+      <div class="decision-row">
+        <p class="decision-q">Response Validation</p>
+        <p class="decision-a">Format + business insights</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F8F9FA; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #0F4C75; padding: 12pt 40pt; display: flex; align-items: center;
+}
+.header-text { color: #FFFFFF; font-size: 22pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 12pt 40pt 36pt 40pt; display: flex; gap: 18pt;
+}
+.left-col { flex: 1.1; display: flex; flex-direction: column; gap: 8pt; }
+.right-col { flex: 0.9; display: flex; flex-direction: column; gap: 8pt; }
+.card {
+  background: #FFFFFF; border-radius: 5pt; padding: 10pt 14pt;
+  border-left: 4pt solid #3282B8;
+}
+.card.problem { border-left-color: #E74C3C; }
+.card.solution { border-left-color: #00C49A; }
+.card.impact { border-left-color: #F39C12; }
+.card.scale { border-left-color: #9B59B6; }
+.card-label { color: #6C757D; font-size: 8pt; font-weight: bold; margin: 0 0 3pt 0; text-transform: uppercase; letter-spacing: 0.5pt; }
+.card-title { color: #1B262C; font-size: 12pt; font-weight: bold; margin: 0 0 4pt 0; }
+.card-text { color: #495057; font-size: 10pt; margin: 0; line-height: 1.3; }
+.highlight { color: #0F4C75; font-weight: bold; }
+.metric-row { display: flex; gap: 12pt; margin-top: 8pt; }
+.metric-box { flex: 1; background: #0F4C75; border-radius: 4pt; padding: 8pt; text-align: center; }
+.metric-value { color: #00C49A; font-size: 16pt; font-weight: bold; margin: 0; }
+.metric-label { color: #BBE1FA; font-size: 8pt; margin: 3pt 0 0 0; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Executive Summary</h1>
+</div>
+<div class="content">
+  <div class="left-col">
+    <div class="card problem">
+      <p class="card-label">The Problem</p>
+      <p class="card-title">SQL Knowledge Gap</p>
+      <p class="card-text">Executives need instant insights from sales data but lack SQL skills. Analysts are bottlenecked with ad-hoc requests.</p>
+    </div>
+    <div class="card solution">
+      <p class="card-label">Our Solution</p>
+      <p class="card-title">4-Agent GenAI System</p>
+      <p class="card-text">Natural language queries converted to SQL, executed, and returned as <span class="highlight">business insights with context</span>.</p>
+    </div>
+    <div class="card impact">
+      <p class="card-label">Business Impact</p>
+      <p class="card-title">Self-Service Analytics</p>
+      <p class="card-text">Democratize data access. Any user can query sales performance without technical knowledge.</p>
+    </div>
+  </div>
+  <div class="right-col">
+    <div class="card scale">
+      <p class="card-label">Scale Ready</p>
+      <p class="card-title">Demo to Enterprise Path</p>
+      <p class="card-text">Demo runs on 128K rows with DuckDB. Architecture designed for <span class="highlight">100GB+ with BigQuery</span>.</p>
+    </div>
+    <div class="metric-row">
+      <div class="metric-box">
+        <p class="metric-value">4</p>
+        <p class="metric-label">AGENTS</p>
+      </div>
+      <div class="metric-box">
+        <p class="metric-value">&lt;5s</p>
+        <p class="metric-label">LATENCY</p>
+      </div>
+      <div class="metric-box">
+        <p class="metric-value">128K</p>
+        <p class="metric-label">ROWS</p>
+      </div>
+    </div>
+    <div class="metric-row">
+      <div class="metric-box">
+        <p class="metric-value">100GB+</p>
+        <p class="metric-label">SCALE TARGET</p>
+      </div>
+      <div class="metric-box">
+        <p class="metric-value">3</p>
+        <p class="metric-label">LLMs USED</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

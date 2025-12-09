@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F4F6F6; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #1C2833; padding: 20pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 28pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 20pt 35pt; display: flex; gap: 20pt;
+}
+.scale-card {
+  flex: 1; background: #FFFFFF; border-radius: 6pt; padding: 15pt 18pt;
+  border-top: 4pt solid #16A085;
+}
+.scale-card.ingestion { border-top-color: #3498DB; }
+.scale-card.storage { border-top-color: #9B59B6; }
+.scale-card.retrieval { border-top-color: #E67E22; }
+.scale-card.orchestration { border-top-color: #16A085; }
+.scale-title { color: #1C2833; font-size: 13pt; font-weight: bold; margin: 0 0 10pt 0; }
+.scale-item { color: #2C3E50; font-size: 10pt; margin: 0 0 8pt 0; line-height: 1.4; }
+.tech-badge {
+  display: inline-block; background: #F4F6F6; color: #5D6D7E;
+  font-size: 8pt; padding: 2pt 6pt; border-radius: 3pt;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Scaling to 100GB+</h1>
+</div>
+<div class="content">
+  <div class="scale-card ingestion">
+    <p class="scale-title">A. Data Ingestion</p>
+    <p class="scale-item">Batch processing with PySpark or Dataflow for massive CSV/transactional data</p>
+    <p class="scale-item">Incremental loads via change data capture</p>
+    <p class="scale-item">Data quality checks before warehouse load</p>
+    <p><span class="tech-badge">PySpark</span><span class="tech-badge">Dataflow</span><span class="tech-badge">dbt</span></p>
+  </div>
+  <div class="scale-card storage">
+    <p class="scale-title">B. Storage Layer</p>
+    <p class="scale-item">Cloud data warehouse (BigQuery/Snowflake) for petabyte scale</p>
+    <p class="scale-item">Data lake (GCS/S3) for raw file storage</p>
+    <p class="scale-item">Parquet format for analytical queries</p>
+    <p><span class="tech-badge">BigQuery</span><span class="tech-badge">GCS</span><span class="tech-badge">Parquet</span></p>
+  </div>
+  <div class="scale-card retrieval">
+    <p class="scale-title">C. Query Efficiency</p>
+    <p class="scale-item">RAG pattern for dynamic schema retrieval</p>
+    <p class="scale-item">Vector embeddings for similar query lookup</p>
+    <p class="scale-item">Metadata filtering before LLM processing</p>
+    <p><span class="tech-badge">FAISS</span><span class="tech-badge">ChromaDB</span><span class="tech-badge">RAG</span></p>
+  </div>
+  <div class="scale-card orchestration">
+    <p class="scale-title">D. LLM Optimization</p>
+    <p class="scale-item">Query result caching in Redis</p>
+    <p class="scale-item">Prompt templates for consistency</p>
+    <p class="scale-item">Exponential backoff for API resilience</p>
+    <p><span class="tech-badge">Redis</span><span class="tech-badge">LangChain</span><span class="tech-badge">Retry</span></p>
+  </div>
+</div>
+</body>
+</html>

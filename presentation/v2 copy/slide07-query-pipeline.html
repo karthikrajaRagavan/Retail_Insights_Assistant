@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F8F9FA; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #0F4C75; padding: 16pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 24pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 15pt 30pt 35pt 30pt; display: flex; flex-direction: column; gap: 12pt;
+}
+.pipeline-row { display: flex; align-items: stretch; gap: 6pt; }
+.step-box {
+  background: #FFFFFF; border-radius: 4pt; padding: 8pt 10pt;
+  border: 2pt solid #DEE2E6; text-align: center; flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.step-box.active { border-color: #00C49A; background: #E8F8F5; }
+.step-num { color: #0F4C75; font-size: 14pt; font-weight: bold; margin: 0; }
+.step-name { color: #1B262C; font-size: 9pt; font-weight: bold; margin: 3pt 0 0 0; }
+.step-time { color: #00C49A; font-size: 8pt; margin: 2pt 0 0 0; }
+.arrow { color: #3282B8; font-size: 14pt; display: flex; align-items: center; }
+.example-box {
+  background: #FFFFFF; border-radius: 6pt; padding: 14pt 18pt;
+  border: 1pt solid #DEE2E6; flex: 1;
+}
+.example-title { color: #0F4C75; font-size: 11pt; font-weight: bold; margin: 0 0 10pt 0; }
+.example-section { margin-bottom: 10pt; }
+.example-label { color: #6C757D; font-size: 9pt; font-weight: bold; margin: 0 0 4pt 0; }
+.example-text { color: #1B262C; font-size: 10pt; margin: 0; }
+.code-block {
+  background: #1B262C; border-radius: 4pt; padding: 8pt 10pt; margin-top: 4pt;
+}
+.code-text { color: #00C49A; font-size: 9pt; font-family: Courier New, monospace; margin: 0; }
+.insight-text { color: #495057; font-size: 10pt; margin: 0; font-style: italic; }
+.timing-box {
+  background: #0F4C75; border-radius: 4pt; padding: 8pt 12pt;
+  display: flex; justify-content: space-around;
+}
+.timing-item { text-align: center; }
+.timing-value { color: #00C49A; font-size: 14pt; font-weight: bold; margin: 0; }
+.timing-label { color: #BBE1FA; font-size: 8pt; margin: 2pt 0 0 0; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Query-Response Pipeline</h1>
+</div>
+<div class="content">
+  <div class="pipeline-row">
+    <div class="step-box active">
+      <p class="step-num">1</p>
+      <p class="step-name">User Query</p>
+      <p class="step-time">0ms</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step-box">
+      <p class="step-num">2</p>
+      <p class="step-name">Guardrails</p>
+      <p class="step-time">200ms</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step-box">
+      <p class="step-num">3</p>
+      <p class="step-name">NL to SQL</p>
+      <p class="step-time">1.2s</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step-box">
+      <p class="step-num">4</p>
+      <p class="step-name">Execute</p>
+      <p class="step-time">50ms</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step-box">
+      <p class="step-num">5</p>
+      <p class="step-name">Format</p>
+      <p class="step-time">800ms</p>
+    </div>
+    <p class="arrow">></p>
+    <div class="step-box active">
+      <p class="step-num">6</p>
+      <p class="step-name">Response</p>
+      <p class="step-time">2.3s total</p>
+    </div>
+  </div>
+  <div class="example-box">
+    <p class="example-title">Example: "What are the top 5 selling categories?"</p>
+    <div class="example-section">
+      <p class="example-label">GENERATED SQL (Step 3)</p>
+      <div class="code-block">
+        <p class="code-text">SELECT category, SUM(amount) as total_sales FROM amazon_sales WHERE amount IS NOT NULL GROUP BY category ORDER BY total_sales DESC LIMIT 5</p>
+      </div>
+    </div>
+    <div class="example-section">
+      <p class="example-label">FORMATTED RESPONSE (Step 5-6)</p>
+      <p class="insight-text">"Set category leads with Rs 45.2M (32% of total revenue), followed by Kurta at Rs 28.1M (20%). Western Dress shows highest growth potential with strong urban demand..."</p>
+    </div>
+  </div>
+  <div class="timing-box">
+    <div class="timing-item">
+      <p class="timing-value">200ms</p>
+      <p class="timing-label">GUARDRAILS</p>
+    </div>
+    <div class="timing-item">
+      <p class="timing-value">1.2s</p>
+      <p class="timing-label">SQL GEN (LLM)</p>
+    </div>
+    <div class="timing-item">
+      <p class="timing-value">50ms</p>
+      <p class="timing-label">DUCKDB QUERY</p>
+    </div>
+    <div class="timing-item">
+      <p class="timing-value">800ms</p>
+      <p class="timing-label">RESPONSE (LLM)</p>
+    </div>
+    <div class="timing-item">
+      <p class="timing-value">2.3s</p>
+      <p class="timing-label">END-TO-END</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #F8F9FA; font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+}
+.header {
+  background: #0F4C75; padding: 12pt 40pt;
+}
+.header-text { color: #FFFFFF; font-size: 22pt; font-weight: bold; margin: 0; }
+.content {
+  flex: 1; padding: 12pt 30pt 36pt 30pt; display: flex; gap: 20pt;
+}
+.left-col { flex: 0.48; }
+.right-col { flex: 0.52; }
+.section-card {
+  background: #FFFFFF; border-radius: 5pt; padding: 12pt 14pt;
+  border: 1pt solid #DEE2E6; height: 100%;
+}
+.section-title { color: #E74C3C; font-size: 12pt; font-weight: bold; margin: 0 0 10pt 0; }
+.section-title.roadmap { color: #00C49A; }
+.limit-item { display: flex; margin-bottom: 8pt; gap: 6pt; }
+.limit-bullet { color: #E74C3C; font-size: 10pt; margin: 0; }
+.limit-content { flex: 1; }
+.limit-title { color: #1B262C; font-size: 10pt; font-weight: bold; margin: 0 0 2pt 0; }
+.limit-text { color: #6C757D; font-size: 8pt; margin: 0; }
+.roadmap-item { display: flex; margin-bottom: 10pt; align-items: flex-start; gap: 8pt; }
+.roadmap-quarter {
+  background: #0F4C75; border-radius: 3pt; padding: 3pt 6pt; flex-shrink: 0;
+}
+.roadmap-quarter-text { color: #FFFFFF; font-size: 8pt; font-weight: bold; margin: 0; }
+.roadmap-content { flex: 1; }
+.roadmap-title { color: #1B262C; font-size: 10pt; font-weight: bold; margin: 0 0 2pt 0; }
+.roadmap-text { color: #6C757D; font-size: 8pt; margin: 0; }
+.priority-tag { color: #00C49A; font-size: 7pt; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1 class="header-text">Limitations & Roadmap</h1>
+</div>
+<div class="content">
+  <div class="left-col">
+    <div class="section-card">
+      <p class="section-title">Current Limitations</p>
+      <div class="limit-item">
+        <p class="limit-bullet">X</p>
+        <div class="limit-content">
+          <p class="limit-title">Limited Date Range</p>
+          <p class="limit-text">Only 3 months (Apr-Jun 2022). No YoY analysis.</p>
+        </div>
+      </div>
+      <div class="limit-item">
+        <p class="limit-bullet">X</p>
+        <div class="limit-content">
+          <p class="limit-title">Single Data Source</p>
+          <p class="limit-text">Amazon India only. No cross-channel insights.</p>
+        </div>
+      </div>
+      <div class="limit-item">
+        <p class="limit-bullet">X</p>
+        <div class="limit-content">
+          <p class="limit-title">Hardcoded Schema</p>
+          <p class="limit-text">Schema in prompts. Won't adapt to changes.</p>
+        </div>
+      </div>
+      <div class="limit-item">
+        <p class="limit-bullet">X</p>
+        <div class="limit-content">
+          <p class="limit-title">Session Memory Only</p>
+          <p class="limit-text">No history across sessions.</p>
+        </div>
+      </div>
+      <div class="limit-item">
+        <p class="limit-bullet">X</p>
+        <div class="limit-content">
+          <p class="limit-title">No Query Caching</p>
+          <p class="limit-text">Repeated questions hit LLM each time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-col">
+    <div class="section-card">
+      <p class="section-title roadmap">Future Roadmap</p>
+      <div class="roadmap-item">
+        <div class="roadmap-quarter"><p class="roadmap-quarter-text">Q1</p></div>
+        <div class="roadmap-content">
+          <p class="roadmap-title">Redis + BigQuery <span class="priority-tag">HIGH</span></p>
+          <p class="roadmap-text">60% cost reduction. Scale to 100GB+.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-quarter"><p class="roadmap-quarter-text">Q2</p></div>
+        <div class="roadmap-content">
+          <p class="roadmap-title">RAG Dynamic Schema <span class="priority-tag">HIGH</span></p>
+          <p class="roadmap-text">Vector DB for table discovery.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-quarter"><p class="roadmap-quarter-text">Q3</p></div>
+        <div class="roadmap-content">
+          <p class="roadmap-title">Multi-Source Integration</p>
+          <p class="roadmap-text">Shopify, Magento, WooCommerce.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-quarter"><p class="roadmap-quarter-text">Q4</p></div>
+        <div class="roadmap-content">
+          <p class="roadmap-title">Streaming Analytics</p>
+          <p class="roadmap-text">Pub/Sub + Dataflow real-time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
