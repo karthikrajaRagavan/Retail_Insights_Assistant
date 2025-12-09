@@ -31,6 +31,5 @@ node_modules/
 Thumbs.db
 
 # Outputs
-*.pptx
 *.pdf
 outputs/
