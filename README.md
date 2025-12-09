@@ -6,7 +6,7 @@ A GenAI-powered multi-agent system for retail sales analytics. Built to interpre
 
 ## Architecture
 
-![Architecture](presentation/architecture.png)
+![Architecture](README_Images/architecture.png)
 
 
 ## Technologies
@@ -67,7 +67,7 @@ adk web
 
 Open http://127.0.0.1:8000 and select `retail_insights_agent` from the dropdown:
 
-![Select Agent](reference_img.png)
+![Select Agent](README_Images/reference_img.png)
 
 
 ## Demo Examples
@@ -98,7 +98,7 @@ Open http://127.0.0.1:8000 and select `retail_insights_agent` from the dropdown:
 
 ## Multi-Agent Design
 
-![Multi-Agent Pipeline](presentation/multi_agent_design.png)
+![Multi-Agent Pipeline](README_Images/multi_agent_design.png)
 
 | Agent | Responsibility |
 |-------|----------------|
@@ -194,8 +194,7 @@ retail_insights_repo/
 |       +-- Amazon Sale Report.csv
 |
 |-- presentation/          # Architecture slides and images
-|-- screenshots/           # Demo evidence
-+-- blend_team_shared_resources/  # Assignment docs & raw data
++-- screenshots/           # Demo evidence
 ```
 
 ---
